@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div id="container">
+        <ion-item color="light" style="margin-bottom: 50px;">
+            <ion-label>Time duration</ion-label>
+            <ion-datetime displayFormat="mm:ss" placeholder="Tap here" [(ngModel)]="restTime"></ion-datetime>
+        </ion-item>
+
+        <circle-progress [percent]="percent" [outerStrokeColor]="'#000000'" [outerStrokeGradientStopColor]="'#c2c2c2'" [innerStrokeColor]="'#e8e8e8'" [outerStrokeGradient]="true">
+        </circle-progress>
+
+        <p>
+            {{ timeSpend.m
+            < 10 ? '0'+timeSpend.m : timeSpend.m }} : {{ timeSpend.s < 10 ? '0'+timeSpend.s : timeSpend.s }} </p>
+
+                <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="startTimer()">
+                    <ion-fab-button>
+                        <ion-icon *ngIf="!goTimer; else stop" name="play"></ion-icon>
+                        <ng-template #stop>
+                            <ion-icon name="square"></ion-icon>
+                        </ng-template>
+                    </ion-fab-button>
+                </ion-fab>
+    </div>
+
 </ion-content>
